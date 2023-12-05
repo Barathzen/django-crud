@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #90ccc6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #333;
+            color: #90ccc6;
+            padding: 10px;
+        }
+
+        .login-container {
+            border: 1px solid black;
+            padding: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 10px auto;
+        }
+
+        label {
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            color: white;
+            background-color: black;
+            border: 1px solid #ccc;
+            width: 70%;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: black;
+            color: #fff;
+            border-radius: 10px;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>AIR TICKET MANAGEMENT</h1>
+</div>
+<br>
+<div class="container">
+    <div class="login-container">
+        <h3 style="font-size:30px;">Login Page</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</div>
+</body>
+</html>

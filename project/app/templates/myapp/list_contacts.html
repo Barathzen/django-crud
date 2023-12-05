@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #90ccc6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #333;
+            color: #90ccc6;
+            padding: 10px;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        table {
+            width: 95%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: 30px;
+            background-color: #333;
+            color:#90ccc6;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #90ccc6;
+        }
+
+        .add-link {
+            background-color: #4caf50;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .add-link:hover {
+            background-color: #45a049;
+        }
+
+        .edit-link, .delete-link {
+            display: inline-block;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        .edit-link {
+            background-color: #2196f3;
+            color: white;
+        }
+
+        .delete-link {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .edit-link:hover, .delete-link:hover {
+            background-color: #0e91d7;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Passenger List</h1>
+</div>
+<br>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Age</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Airplane No</th>
+            <th>Seat No</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phno }}</td>
+                <td>{{ contact.age }}</td>
+                <td>{{ contact.from_destination }}</td>
+                <td>{{ contact.to_destination }}</td>
+                <td>{{ contact.airplane_no }}</td>
+                <td>{{ contact.seat_no }}</td>
+                <td>
+                    <a class="edit-link" href="{% url 'edit_contact' contact.id %}">Edit</a>
+                    <a class="delete-link" href="{% url 'delete_contact' contact.id %}">Delete</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="9">No Details available.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="add-link" href="{% url 'add_contact' %}">Add Passenger</a>
+</div>
+</body>
+</html>
